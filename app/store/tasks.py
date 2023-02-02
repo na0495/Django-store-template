@@ -9,7 +9,8 @@ from .models import Cart
 # store tasks ---
 # ---------------
 
-utc=pytz.UTC
+utc = pytz.UTC
+
 
 @shared_task
 def delete_outdated_cart():
@@ -21,5 +22,7 @@ def delete_outdated_cart():
     carts = Cart.objects.filter(created_at__lt=outdated)
     count = carts.count()
     carts.delete()
-    return {'status': 'success', 'message': f'Outdated carts are deleted, ({count} carts deleted)'}
-
+    return {
+        'status': 'success',
+        'message': f'Outdated carts are deleted, ({count} carts deleted)',
+    }

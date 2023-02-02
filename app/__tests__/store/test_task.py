@@ -5,7 +5,8 @@ import datetime
 import pytz
 
 
-utc=pytz.UTC
+utc = pytz.UTC
+
 
 @pytest.mark.django_db
 def test_delete_outdated_cart(user, cart_one):

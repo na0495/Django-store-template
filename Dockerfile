@@ -16,7 +16,7 @@ RUN mkdir /app
 WORKDIR /app
 
 #copy the app code to image working directory
-COPY ./app ./app
+COPY /app ./app
 
 COPY requirements.txt requirements.txt
 

@@ -1,8 +1,7 @@
 import json
 
 from core.periodic_tasks import CELERY_BEAT_SCHEDULE
-from django_celery_beat.models import (CrontabSchedule, IntervalSchedule,
-                                       PeriodicTask)
+from django_celery_beat.models import CrontabSchedule, IntervalSchedule, PeriodicTask
 
 # -------------------------------------------------
 

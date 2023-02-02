@@ -6,7 +6,7 @@ CELERY_BEAT_SCHEDULE = {
         # update every day at midnight
         "schedule": CrontabSchedule(minute='0', hour='0'),
     },
-    #* This is just for testing purposes to see the task is working properly *#
+    # * This is just for testing purposes to see the task is working properly *#
     # "delete_outdated_cart_every_10_s": {
     #     "task": "store.tasks.delete_outdated_cart",
     #     "schedule": IntervalSchedule.objects.create(every=10, period=IntervalSchedule.SECONDS),

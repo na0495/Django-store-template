@@ -19,4 +19,4 @@ def test_get_cart_str(cart_one):
 
 @pytest.mark.django_db
 def test_get_cart_item_str(cart_item_one, product_one):
-    assert cart_item_one.__str__() == f"{product_one.name} - 1" 
+    assert cart_item_one.__str__() == f"{product_one.name} - 1"

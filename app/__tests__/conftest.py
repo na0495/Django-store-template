@@ -14,7 +14,7 @@ from rest_framework.test import APIClient
 from django.test import TestCase
 import pytz
 
-utc=pytz.UTC
+utc = pytz.UTC
 
 # -------------------------
 
@@ -131,5 +131,7 @@ def cart_two(cart_item_three, user):
 def outdated_cart(cart_item_one, user):
     cart = CartFactory(user=user)
     cart.items.add(cart_item_one)
-    cart.created_at = utc.localize(datetime.datetime.now() - datetime.timedelta(days=65))
+    cart.created_at = utc.localize(
+        datetime.datetime.now() - datetime.timedelta(days=65)
+    )
     return cart

@@ -9,7 +9,6 @@ from django.utils.translation import gettext_lazy as _
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-
     # Define Gender choice
     GENDER_CHOICES = (
         ('M', 'Male'),

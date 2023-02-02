@@ -3,9 +3,13 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.throttling import UserRateThrottle
 
 from .models import Cart, CartItem, Category, Product
-from .serializers import (CartSerializer, CategorySerializer,
-                          DisplayCartSerializer, DisplayProductSerializer,
-                          ProductSerializer)
+from .serializers import (
+    CartSerializer,
+    CategorySerializer,
+    DisplayCartSerializer,
+    DisplayProductSerializer,
+    ProductSerializer,
+)
 
 # ---------------------
 # Store APIs views ----

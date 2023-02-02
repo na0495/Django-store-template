@@ -47,4 +47,6 @@ class CartFactory(factory.django.DjangoModelFactory):
 
     user = factory.SubFactory(UserFactory)
     items = factory.RelatedFactory(CartItemFactory)
-    created_at = factory.LazyAttribute(lambda o: faker.date_time_between(start_date='-30d', end_date='now'))
+    created_at = factory.LazyAttribute(
+        lambda o: faker.date_time_between(start_date='-30d', end_date='now')
+    )

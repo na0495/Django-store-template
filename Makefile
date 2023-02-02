@@ -2,10 +2,10 @@ help:
 	@echo "make test"
 
 test:
-	-docker-compose run web_engine_local pytest --show-capture=no --disable-pytest-warnings
+	-docker-compose run django_app pytest --show-capture=no --disable-pytest-warnings
 
 test-p:
-	-docker-compose run web_engine_local pytest --show-capture=no --disable-pytest-warnings ${p}
+	-docker-compose run django_app pytest --show-capture=no --disable-pytest-warnings ${p}
 
 local:
 	-docker-compose up
@@ -20,30 +20,30 @@ down:
 	-docker-compose down
 
 migration:
-	-docker-compose run web_engine_local python manage.py makemigrations
+	-docker-compose run django_app python manage.py makemigrations
 
 migrate:
-	-docker-compose run web_engine_local python manage.py migrate
+	-docker-compose run django_app python manage.py migrate
 
 new:
-	-docker-compose run web_engine_local python manage.py startapp ${app}
+	-docker-compose run django_app python manage.py startapp ${app}
 
 seeds:
-	-docker-compose run web_engine_local python manage.py seeds ${i}
+	-docker-compose run django_app python manage.py seeds ${i}
 
 bash:
-	-docker-compose run web_engine_local bash
+	-docker-compose run django_app bash
 
 superuser:
-	-docker-compose run web_engine_local python manage.py createsuperuser
+	-docker-compose run django_app python manage.py createsuperuser
 
 black:
-	-docker-compose run web_engine_local black -S .
+	-docker-compose run django_app black -S .
 
 
 coverage:
-	-docker-compose run web_engine_local pytest --cov
-	-docker-compose run web_engine_local coverage html
+	-docker-compose run django_app pytest --cov
+	-docker-compose run django_app coverage html
 
 shell:
-	-docker-compose run web_engine_local python manage.py shell
+	-docker-compose run django_app python manage.py shell
