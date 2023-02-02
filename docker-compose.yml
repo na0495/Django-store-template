@@ -1,0 +1,76 @@
+
+version: "3.7"
+
+services:
+  db:
+    restart: on-failure
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=apps
+      - POSTGRES_PASSWORD=local1234
+      - POSTGRES_DB=local_db
+    command: postgres -c listen_addresses='*'
+
+  pgAdmin_local:
+    image: dpage/pgadmin4
+    restart: on-failure
+    logging:
+      driver: none
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: local1234
+    ports:
+      - "5050:80"
+    
+  web_engine_local:
+    image: web_engine_local
+    env_file: .env.local
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: on-failure
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
+    
+    command: >
+      bash -c "python manage.py migrate
+      && python manage.py seeds
+      && python manage.py runserver 0.0.0.0:8080"
+    depends_on:
+      - db
+
+  rabbitmq:
+    image: rabbitmq:latest
+    restart: on-failure
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    ports:
+      - "5672:5672"
+
+    
+  celery_local:
+    image: celery_local
+    restart: always
+    env_file: .env.local
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5471:5471"
+    volumes:
+      - .:/app
+    command: >
+      bash -c "python manage.py shell < scripts/fill_periodic_tasks.py
+      && celery --app=core.celery:celery_app beat -l INFO --scheduler django_celery_beat.schedulers:DatabaseScheduler"
+    depends_on:
+      - rabbitmq
+      - web_engine_local

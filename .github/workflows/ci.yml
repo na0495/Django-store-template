@@ -1,0 +1,29 @@
+name: Django CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: [3.9]
+
+    steps:
+        # run docker build
+        - uses: actions/checkout@v2
+        - name: Run docker build
+          run: |
+            docker-compose up --build -d
+        
+        # run coverage
+        - uses: actions/checkout@v2
+        - name: Run coverage
+          run: |
+            make coverage
