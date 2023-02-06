@@ -5,7 +5,7 @@
   </a>
 </p>
 
-Django Store Template is a demonstration of a backend application built using Django framework. The project showcases the use of two apps - Account and Store, following Django project architecture. Additionally, the project demonstrates the integration of various tools with Django, including pytest for testing, celery and RabbitMQ for scheduling tasks, and Docker and Docker-Compose for containerizing the entire application.
+Django Store Template is a demonstration of a backend application built using Django framework. The project showcases the use of two apps - Account and Store, following Django project architecture. Additionally, the project demonstrates the integration of various tools with Django, including pytest for testing, celery and RabbitMQ for scheduling tasks, and PostgreSQL database, and Docker and Docker-Compose for containerizing the entire application.
 
 ## The usage of this template is pretty easy:
 
