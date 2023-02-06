@@ -1,27 +1,29 @@
-<h1 align="center">Django template setup 👋</h1>
+<h1 align="center">Djange store template 👋</h1>
 <p>
   <a href="http://localhost:8080/redoc/" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
 </p>
 
-> Django e-commerce 
+Django Store Template is a demonstration of a backend application built using Django framework. The project showcases the use of two apps - Account and Store, following Django project architecture. Additionally, the project demonstrates the integration of various tools with Django, including pytest for testing, celery and RabbitMQ for scheduling tasks, and Docker and Docker-Compose for containerizing the entire application.
 
-## Install
+## The usage of this template is pretty easy:
+
+### Install & build docker images using docker compose:
 
 ```sh
 make build
 ```
 
-## Usage
+## to run the containers:
 
 ```sh
 make local
 ```
 
-To use different API that the backend provides, make sure to use add the prefix 'JWT `<your token<` ' to the request header, if you are asked for authentication.
+To use different API that the backend provides, make sure to use add the prefix 'JWT `<your token>` ' to the request header, if you are asked for authentication.
 
-## Run tests
+## To run pytest use:
 
 ```sh
 make test
@@ -42,6 +44,8 @@ make superuser
 ```
 
 and then login in the admin panel with your credentials.
+
+> Note: if you have problems running Makefile commands line, you can just check Makfile file, then copt and past the commands into your terminal.
 
 ## Author
 
